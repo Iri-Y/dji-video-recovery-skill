@@ -48,10 +48,30 @@ This skill uses **FAT chain recovery**:
 
 ### Installation
 
+#### Claude Code
+
+```bash
+# Install skill globally
+claude mcp add-skill --global git:Iri-Y/dji-video-recovery-skill
+```
+
+Or manually:
 ```bash
 git clone https://github.com/Iri-Y/dji-video-recovery-skill.git
 cd dji-video-recovery-skill
 ./install.sh
+```
+
+#### OpenClaw
+
+```bash
+# Install from Git
+openclaw skills install git:Iri-Y/dji-video-recovery-skill
+```
+
+Or install from ClawHub (after publishing):
+```bash
+openclaw skills install dji-video-recovery
 ```
 
 ### Usage with AI Tools
@@ -97,11 +117,16 @@ On a 64GB DJI OsmoPocket3 SD card with 583 deleted videos:
 ```
 dji-video-recovery-skill/
 ├── README.md                    # This file
-├── README_CN.md                 # Chinese documentation
-├── skill.md                     # AI skill instructions
-├── scripts/
-│   ├── fat_chain_recover.py     # Core recovery script
-│   └── verify_recovery.py       # Batch verification script
+├── skill.md                     # AI skill instructions (legacy)
+├── skills/
+│   └── dji-video-recovery/
+│       ├── SKILL.md             # AgentSkills standard skill definition
+│       └── scripts/
+│           ├── fat_chain_recover.py  # Core recovery script
+│           └── verify_recovery.py    # Batch verification script
+├── scripts/                     # Scripts (for manual use)
+│   ├── fat_chain_recover.py
+│   └── verify_recovery.py
 └── install.sh                   # Installation helper
 ```
 
@@ -155,10 +180,30 @@ DJI 无人机以 `ftyp + free + free + mdat + moov` 结构存储 MP4 视频。`m
 
 ### 安装
 
+#### Claude Code
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/dji-video-recovery-skill.git
+# 全局安装技能
+claude mcp add-skill --global git:Iri-Y/dji-video-recovery-skill
+```
+
+或手动安装：
+```bash
+git clone https://github.com/Iri-Y/dji-video-recovery-skill.git
 cd dji-video-recovery-skill
 ./install.sh
+```
+
+#### OpenClaw
+
+```bash
+# 从 Git 安装
+openclaw skills install git:Iri-Y/dji-video-recovery-skill
+```
+
+或从 ClawHub 安装（发布后）：
+```bash
+openclaw skills install dji-video-recovery
 ```
 
 ### 配合 AI 工具使用

@@ -25,13 +25,19 @@ else
     echo "  ffmpeg: $(ffmpeg -version | head -1)"
 fi
 
-# Install skill for Claude Code
-SKILL_DIR="$HOME/.claude/skills"
-mkdir -p "$SKILL_DIR"
+# Install skill for Claude Code (AgentSkills standard)
+SKILL_DIR="$HOME/.claude/skills/${SKILL_NAME}"
+mkdir -p "$SKILL_DIR/scripts"
 
-cp "$SCRIPT_DIR/skill.md" "$SKILL_DIR/${SKILL_NAME}.md"
+cp "$SCRIPT_DIR/skills/${SKILL_NAME}/SKILL.md" "$SKILL_DIR/"
+cp "$SCRIPT_DIR/skills/${SKILL_NAME}/scripts/"*.py "$SKILL_DIR/scripts/"
+chmod +x "$SKILL_DIR/scripts/"*.py
 echo ""
-echo "Skill installed to: $SKILL_DIR/${SKILL_NAME}.md"
+echo "Skill installed to: $SKILL_DIR/SKILL.md"
+
+# Also install legacy format for backward compatibility
+LEGACY_DIR="$HOME/.claude/skills"
+cp "$SCRIPT_DIR/skill.md" "$LEGACY_DIR/${SKILL_NAME}.md"
 
 # Copy scripts to a permanent location
 BIN_DIR="$HOME/.claude/scripts"
