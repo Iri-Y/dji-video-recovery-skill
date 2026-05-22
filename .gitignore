@@ -3,3 +3,6 @@ __pycache__/
 .DS_Store
 recovered/
 *.mp4
+.claude/
+test/
+*.log
